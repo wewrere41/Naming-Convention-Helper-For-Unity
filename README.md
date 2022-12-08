@@ -5,5 +5,5 @@
 #### Its triggering when assets imported/created.
 
 
-![Alt text](Screenshots/T_Image.png "Image0" )
-![Alt text](Screenshots/Test.gif "Image1" )
+![Alt text](Screenshots/Image.png "Image0" )
+![Alt text](Screenshots/Example.gif "Image1" )

@@ -26,14 +26,14 @@ namespace Asset_Naming_Convention_Helper
 
             foreach (var path in paths)
             {
-                if (!path.Contains(NamingConventionDataHelper.TargetPath))
+                if (!path.Contains(NamingConventionHelper.TargetPath))
                     break;
 
                 var assetName = Path.GetFileNameWithoutExtension(path);
                 var assetExtension = Path.GetExtension(path);
 
                 var conventionData =
-                    NamingConventionDataHelper.NamingConventions.FirstOrDefault(x =>
+                    NamingConventionHelper.NamingConventions.FirstOrDefault(x =>
                         x.IsExtensionMatch(assetExtension));
 
                 if (conventionData != null)

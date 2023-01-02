@@ -11,8 +11,8 @@ namespace Asset_Naming_Convention_Helper
 
         private void OnValidate()
         {
-            NamingConventionDataHelper.NamingConventions = NamingConventionDatas;
-            NamingConventionDataHelper.TargetPath = TargetFolder;
+            NamingConventionHelper.NamingConventions = NamingConventionDatas;
+            NamingConventionHelper.TargetPath = TargetFolder;
         }
     }
 

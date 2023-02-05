@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 #pragma warning disable CS4014
@@ -8,26 +7,19 @@ namespace Asset_Naming_Convention_Helper
 {
     public static class NamingConventionHelper
     {
-        public static string TargetPath;
-        public static NamingConventionData[] NamingConventions;
+        public static string TargetPath { get; private set; }
+        public static NamingConventionData[] NamingConventions { get; private set; }
 
-        #region FIRST LOAD
+        public static void Initialize(NamingConventionDataSO namingConventionDataSo) =>
+            (TargetPath, NamingConventions) = namingConventionDataSo;
 
         [InitializeOnLoadMethod]
-        private static void Initialize() => InitializeAfterDelay();
-
-        private static async Task InitializeAfterDelay()
+        private static void OnRecompile()
         {
-            await Task.Delay(100);
-
-            if (TargetPath == null)
-            {
-                var namingConventionDataSO = Resources.Load<NamingConventionDataSO>("NamingConventions");
-                TargetPath = namingConventionDataSO.TargetFolder;
-                NamingConventions = namingConventionDataSO.NamingConventionDatas;
-            }
+            if (TargetPath == null) Initialize(GetConventionDataSo());
         }
 
-        #endregion
+        private static NamingConventionDataSO GetConventionDataSo() =>
+            Resources.Load<NamingConventionDataSO>("NamingConventions");
     }
 }

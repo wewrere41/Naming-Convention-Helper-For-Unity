@@ -8,12 +8,10 @@ namespace Asset_Naming_Convention_Helper
     {
         public string TargetFolder = "";
         public NamingConventionData[] NamingConventionDatas;
+        private void OnValidate() => NamingConventionHelper.Initialize(this);
 
-        private void OnValidate()
-        {
-            NamingConventionHelper.NamingConventions = NamingConventionDatas;
-            NamingConventionHelper.TargetPath = TargetFolder;
-        }
+        public void Deconstruct(out string targetFolder, out NamingConventionData[] namingConventionDatas) =>
+            (targetFolder, namingConventionDatas) = (TargetFolder, NamingConventionDatas);
     }
 
     [Serializable]
@@ -21,8 +19,5 @@ namespace Asset_Naming_Convention_Helper
     {
         [field: SerializeField] public string[] Extensions { get; private set; }
         [field: SerializeField] public string[] Prefixes { get; private set; }
-
-        public NamingConventionData(string[] extensions, string[] prefixes) =>
-            (Extensions, Prefixes) = (extensions, prefixes);
     }
 }

@@ -32,9 +32,8 @@ namespace Asset_Naming_Convention_Helper
                 var assetName = Path.GetFileNameWithoutExtension(path);
                 var assetExtension = Path.GetExtension(path);
 
-                var conventionData =
-                    NamingConventionHelper.NamingConventions.FirstOrDefault(x =>
-                        x.IsExtensionMatch(assetExtension));
+                var conventionData = NamingConventionHelper.NamingConventions.SingleOrDefault(x =>
+                    x.IsExtensionMatch(assetExtension));
 
                 if (conventionData != null)
                 {
